@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+      <title>Lavender Life 2021 Catalog</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src="http://www.turnjs.com/lib/turn.min.js"></script>
+      <script src="http://mozilla.github.io/pdf.js/build/pdf.js"></script>
+      <script defer type="module" src="./src/main.js"></script>
+      <link rel="stylesheet" type="text/css" href="./style/main.css"/>
+    </head>
+    <body>
+      <div id="itemContainer" class="modal" style="display: none;"><iframe id="checkout" class="frame"></iframe></div>
+      <br />  
+      <div id="loader" style="text-align: center;">
+        <div style="margin: auto;" class="loader"></div>
+      </div>     
+      <div id="catalogContainer" style="text-align: center;">
+        <div id="flipbook" style="margin: auto;"></div>
+        <br/>
+          <i class="fas fa-chevron-circle-left fa-3x" id="prev"></i>
+          <i class="fas fa-chevron-circle-right fa-3x" id="next"></i>
+      </div>
+    </body>
+</html>
