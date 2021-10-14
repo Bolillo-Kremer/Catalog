@@ -12,7 +12,7 @@ const Corners = false;
 const ClickTurn = false;
 const Debug = false;
 const ProductColor = "rgba(164,66,245,0.5)";
-const Doc = new FlipBook("./src/data/Catalog.pdf", "./src/data/Products.json", pageLoader, productClick, Scale);
+const Doc = new FlipBook("https://lavender-life-catalog.herokuapp.com/src/data/Catalog.pdf", "https://lavender-life-catalog.herokuapp.com/src/data/Products.json", pageLoader, productClick, Scale);
 
 //#endregion Properties
 
