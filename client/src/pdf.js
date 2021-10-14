@@ -86,9 +86,15 @@ export const PDF = class PDF {
         // Render PDF page into canvas context
         let lRenderContext = {
           canvasContext: lCtx,
-          viewport: lViewport
+          viewport: lViewport,
         };
         let lRenderTask = aPage.render(lRenderContext);
+
+        // let lImageData = lCtx.getImageData(0, 0, lViewport.width, lViewport.height);
+        // lCanvas.height = pageHeight;
+        // lCanvas.width = pageWidth;
+        // lCtx.putImageData(lImageData, 0, 0, 0, 0, pageWidth, pageHeight);
+
         res(lCanvas);
 
         // Wait for rendering to finish

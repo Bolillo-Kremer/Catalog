@@ -3,9 +3,8 @@ import {Cart, Item} from "./cart.js"
 
 //#region Properties
 
-const AspectRatio = getContainerDimensions(screen.width, 30, 495);
-const Scale = 1.5; //getScale(screen.width, 396, 1.25);
 const Catalog = $("#flipbook");
+const Container = $("#catalogContainer");
 const NextPage = $("#next");
 const PrevPage = $("#prev");
 const HardCovers = false;
@@ -13,7 +12,11 @@ const Corners = false;
 const ClickTurn = false;
 const Debug = false;
 const ProductColor = "rgba(164,66,245,0.5)";
-const Doc = new FlipBook("https://lavender-life-catalog.herokuapp.com/src/data/Catalog.pdf", "https://lavender-life-catalog.herokuapp.com/src/data/Products.json", pageLoader, productClick, Scale);
+const Doc = new FlipBook("https://lavender-life-catalog.herokuapp.com/src/data/Catalog.pdf", 
+    "https://lavender-life-catalog.herokuapp.com/src/data/Products.json", 
+    pageLoader, 
+    productClick, 
+    1.5);
 
 //#endregion Properties
 
@@ -26,7 +29,8 @@ function init() {
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
     let lPage = getParam("page");
 
-    $("#catalogContainer").hide();
+    Container.hide();
+    $("#buttonContainer").hide();
     $("#loader").show();
 
     console.log("Loading Document...");
@@ -62,8 +66,19 @@ function init() {
             pageNav(aEvent, false);
         });
 
+        let lScale = getScale(Doc.pageWidth, screen.width, 1);
+        //let lScale = 1;
+        Catalog.css("-webkit-transform", `scale(${lScale})`);
+        Catalog.css("-moz-transform", `scale(${lScale})`);
+        Catalog.css("-ms-transform", `scale(${lScale})`);
+        Catalog.css("transform", `scale(${lScale})`);
         $("#loader").hide();
-        $("#catalogContainer").show();
+        $("#buttonContainer").show();
+        
+        Container.show();
+        // let lDomRect = Catalog[0].getBoundingClientRect()
+        // Container.width(lDomRect.width);
+        // Container.height(lDomRect.height);
     });
 }
 
@@ -101,7 +116,7 @@ function onTurn(aEvent, aPage, aPageObj) {
             lContainer.appendChild(lPage);
 
             if (!Debug) {
-                let lSvg = Doc.getSVG(lIndex, ProductColor, AspectRatio.width, AspectRatio.height);
+                let lSvg = Doc.getSVG(lIndex, ProductColor);
                 lContainer.appendChild(lSvg);
             }
         }
@@ -138,8 +153,6 @@ function pageLoader(aPage) {
         let lInnerContainer  = document.createElement("div");
         lPageContainer.id = `page${aPage.index}`;
         lInnerContainer.style.position = "relative";
-        lInnerContainer.style.width = `${AspectRatio.width}px`;
-        lInnerContainer.style.height = `${AspectRatio.height}px`;
     
         if ((HardCovers && (aPage.index == 0 || aPage.index == 1 || aPage.index == Doc.pageCount - 1 || aPage.index == Doc.pageCount - 2))) {
             lPageContainer.className = "hard";
@@ -178,16 +191,25 @@ function getParam(aParamName) {
     return new URLSearchParams(window.location.search).get(aParamName);
 }
 
-/**
- * Gets the appropriate scale for the catalog
- * @param {*} aScreenWidth 
- * @param {*} aDefaultDocWidth 
- * @param {*} aMaxScale 
- * @returns 
- */
-function getScale(aScreenWidth, aDefaultDocWidth, aMaxScale) {
-    let lScale = (aScreenWidth / aDefaultDocWidth) / 2;
-    lScale -= 0.2;
+// /**
+//  * Gets the appropriate scale for the catalog
+//  * @param {*} aScreenWidth 
+//  * @param {*} aDefaultDocWidth 
+//  * @param {*} aMaxScale 
+//  * @returns 
+//  */
+// function getScale(aScreenWidth, aDefaultDocWidth, aMaxScale) {
+//     let lScale = (aScreenWidth / aDefaultDocWidth) / 2;
+//     lScale -= 0.2;
+//     if (lScale > aMaxScale) {
+//         lScale = aMaxScale;
+//     }
+//     return lScale;
+// }
+
+function getScale(aPageWidth, aScreenWidth, aMaxScale) {
+    let lScale =  (aScreenWidth / aPageWidth) / 2;
+    lScale -= 0.2
     if (lScale > aMaxScale) {
         lScale = aMaxScale;
     }
@@ -200,7 +222,7 @@ function getContainerDimensions(aScreenWidth, aPadding, aMaxWidth) {
         lWidth = aMaxWidth;
     }
     return {"width": lWidth, "height": lWidth * 1.5};
-}
+} 
 
 //#endregion Functions
 

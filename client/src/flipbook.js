@@ -49,9 +49,9 @@ export const FlipBook = class FlipBook {
     return new Promise(async res => {
       await this.overlay.initOverlay();
       let lFirstPage = await this.pdf.initDocument();
-      this.pageCount = this.pdf.pageCount;
       this.pageWidth = lFirstPage.width;
       this.pageHeight = lFirstPage.height;
+      this.pageCount = this.pdf.pageCount;
       await this.getAllPages(); 
       if (aPreLoad != null && aPreLoad != undefined) {
         aPreLoad();
@@ -96,8 +96,8 @@ export const FlipBook = class FlipBook {
     });
   }
 
-  getSVG(aIndex, aColor, aWidth, aHeight) {
-    return this.overlay.getSVG(aIndex, aWidth, aHeight, aColor, this.docScale);
+  getSVG(aIndex, aColor) {
+    return this.overlay.getSVG(aIndex, this.pageWidth, this.pageHeight, aColor, this.docScale);
   }
 }
 
