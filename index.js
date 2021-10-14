@@ -3,7 +3,7 @@ const http = require('http');
 const cors = require('cors');
 
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 //Builds Server
 const app = express();
