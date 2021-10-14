@@ -7,7 +7,7 @@ const port = 5000;
 
 //Builds Server
 const app = express();
-const clientPath = `${__dirname}/../client`;
+const clientPath = `${__dirname}/client`;
 app.use(cors());
 app.use(express.static(clientPath));
 const server = http.createServer(app);
