@@ -3,6 +3,7 @@ import {Cart, Item} from "./cart.js"
 
 //#region Properties
 
+const AspectRatio = getContainerDimensions(screen.width, 30, 495);
 const Scale = 1.5; //getScale(screen.width, 396, 1.25);
 const Catalog = $("#flipbook");
 const NextPage = $("#next");
@@ -99,10 +100,8 @@ function onTurn(aEvent, aPage, aPageObj) {
             lContainer.innerHTML = "";
             lContainer.appendChild(lPage);
 
-
-
             if (!Debug) {
-                let lSvg = Doc.getSVG(lIndex, ProductColor);
+                let lSvg = Doc.getSVG(lIndex, ProductColor, AspectRatio.width, AspectRatio.height);
                 lContainer.appendChild(lSvg);
             }
         }
@@ -114,7 +113,7 @@ function onTurn(aEvent, aPage, aPageObj) {
  * @param {*} aItem The item in the overlay
  */
 function productClick(aItem) {
-    let lBaseUrl = "https://lavender-life.com";
+    let lBaseUrl = "";
     $.getJSON(`${lBaseUrl}/products/${aItem.handle}.js`, aProduct => {
         if (aProduct.available) {
             let addToCart = confirm(`Would you like to add "${aProduct.title}" to your cart?\n$${aProduct.price / 100}`);
@@ -139,6 +138,8 @@ function pageLoader(aPage) {
         let lInnerContainer  = document.createElement("div");
         lPageContainer.id = `page${aPage.index}`;
         lInnerContainer.style.position = "relative";
+        lInnerContainer.style.width = `${AspectRatio.width}px`;
+        lInnerContainer.style.height = `${AspectRatio.height}px`;
     
         if ((HardCovers && (aPage.index == 0 || aPage.index == 1 || aPage.index == Doc.pageCount - 1 || aPage.index == Doc.pageCount - 2))) {
             lPageContainer.className = "hard";
@@ -191,6 +192,14 @@ function getScale(aScreenWidth, aDefaultDocWidth, aMaxScale) {
         lScale = aMaxScale;
     }
     return lScale;
+}
+
+function getContainerDimensions(aScreenWidth, aPadding, aMaxWidth) {
+    let lWidth = (aScreenWidth / 2) - aPadding;
+    if (lWidth > aMaxWidth) {
+        lWidth = aMaxWidth;
+    }
+    return {"width": lWidth, "height": lWidth * 1.5};
 }
 
 //#endregion Functions

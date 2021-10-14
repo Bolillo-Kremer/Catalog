@@ -96,8 +96,8 @@ export const FlipBook = class FlipBook {
     });
   }
 
-  getSVG(aIndex, aColor) {
-    return this.overlay.getSVG(aIndex, this.pageWidth, this.pageHeight, aColor, this.docScale);
+  getSVG(aIndex, aColor, aWidth, aHeight) {
+    return this.overlay.getSVG(aIndex, aWidth, aHeight, aColor, this.docScale);
   }
 }
 
