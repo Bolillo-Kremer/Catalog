@@ -144,7 +144,7 @@ function productClick(aItem) {
             }
         }
         else {
-            alert("Sorry, this product is currently unavailable");
+            alert("Sorry, this product is currently out of stock or unavailable");
         }
     });
 }
