@@ -3,7 +3,7 @@ import {Cart, Item} from "./cart.js"
 
 //#region Properties
 
-const Scale = getScale(screen.width, 396, 1.25);
+const Scale = 1.5; //getScale(screen.width, 396, 1.25);
 const Catalog = $("#flipbook");
 const NextPage = $("#next");
 const PrevPage = $("#prev");
