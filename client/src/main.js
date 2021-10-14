@@ -26,6 +26,12 @@ const Doc = new FlipBook("https://lavender-life-catalog.herokuapp.com/src/data/C
  * Loads the catalog
  */
 function init() {
+    for(let lMetaData of $("meta")) {
+        if (lMetaData.name == "viewport") {
+            $(lMetaData).attr("content", "width=2000");
+        }
+    }
+
     pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
     let lPage = getParam("page");
 
@@ -66,8 +72,8 @@ function init() {
             pageNav(aEvent, false);
         });
 
-        let lScale = getScale(Doc.pageWidth, screen.width, 1);
-        //let lScale = 1;
+        //let lScale = getScale(Doc.pageWidth, screen.width, 1);
+        let lScale = 1;
         Catalog.css("-webkit-transform", `scale(${lScale})`);
         Catalog.css("-moz-transform", `scale(${lScale})`);
         Catalog.css("-ms-transform", `scale(${lScale})`);
