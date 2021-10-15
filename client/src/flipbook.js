@@ -89,7 +89,7 @@ export const FlipBook = class FlipBook {
       for(let i = 0; i < this.pageCount; i++) {
         let lPage = await this.getPage(i + 1);
         if (lPage != null) {
-          pageLoader(lPage);
+          pageLoader(lPage, i, this.pageCount);
         }
       }
       res();

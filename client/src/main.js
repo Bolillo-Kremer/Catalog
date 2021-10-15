@@ -153,8 +153,11 @@ function productClick(aItem) {
  * Runs every time a page is loaded
  * @param {*} aPage The page
  */
-function pageLoader(aPage) {
+function pageLoader(aPage, aIndex, aPageCount) {
     if (aPage != null) {
+        let lLoadingBar = $("#loadingBar");
+        lLoadingBar.attr("value", aIndex);
+        lLoadingBar.attr("max", aPageCount);
         let lPageContainer = document.createElement("div");
         let lInnerContainer  = document.createElement("div");
         lPageContainer.id = `page${aPage.index}`;
