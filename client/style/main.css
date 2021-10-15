@@ -12,6 +12,21 @@ polygon:hover {
   cursor: pointer;
 }
 
+progress {
+  border-radius: 5px;
+  width: 25%;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #d6dbe5;
+  border-radius: 5px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #613569;
+  border-radius: 5px;
+}
+
 .fa-chevron-circle-left {
   color: #7975b0;
 }
@@ -118,14 +133,6 @@ polygon:hover {
     }
   }
 
-  .frame {
-    width: 75%;
-    height: 500px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .center {
     display: block;
     margin: auto;
@@ -143,38 +150,6 @@ polygon:hover {
     padding-top: 16px;
   }
   
-  /* The Modal (background) */
-  .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
-  }
-  
-  /* Modal Content/Box */
-  .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-  }
-
-  .loader {
-    border: 16px solid #f3f3f3;
-    border-radius: 50%;
-    border-top: 16px solid #7975b0;
-    width: 120px;
-    height: 120px;
-    -webkit-animation: spin 2s linear infinite; /* Safari */
-    animation: spin 2s linear infinite;
-  }
   
   /* Safari */
   @-webkit-keyframes spin {
