@@ -134,13 +134,15 @@ function onTurn(aEvent, aPage, aPageObj) {
  * @param {*} aItem The item in the overlay
  */
 function productClick(aItem) {
-    let lBaseUrl = "";
-    console.log(aItem.id);
+    let lBaseUrl = "https://lavender-life.com";
+    lBaseUrl = window.location.origin == lBaseUrl ? "" : lBaseUrl;
+
     $.getJSON(`${lBaseUrl}/products/${aItem.handle}.js`, aProduct => {
         let lVariant = null;
-        for(let lVariant of aProduct.variants) {
-            if (lVariant.id == aItem.id) {
-                lVariant = lVariant;
+
+        for(let lPoductVariant of aProduct.variants) {
+            if (lPoductVariant.id == aItem.id) {
+                lVariant = lPoductVariant;
             }
         }
 
