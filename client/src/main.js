@@ -135,9 +135,17 @@ function onTurn(aEvent, aPage, aPageObj) {
  */
 function productClick(aItem) {
     let lBaseUrl = "";
+    console.log(aItem.id);
     $.getJSON(`${lBaseUrl}/products/${aItem.handle}.js`, aProduct => {
-        if (aProduct.available) {
-            let addToCart = confirm(`Would you like to add "${aProduct.title}" to your cart?\n$${aProduct.price / 100}`);
+        let lVariant = null;
+        for(let lVariant of aProduct.variants) {
+            if (lVariant.id == aItem.id) {
+                lVariant = lVariant;
+            }
+        }
+
+        if (lVariant != null && lVariant.available) {
+            let addToCart = confirm(`Would you like to add "${lVariant.name}" to your cart?\n$${lVariant.price / 100}`);
 
             if(addToCart) {
                 Cart.addToCart(aItem);
@@ -155,8 +163,10 @@ function productClick(aItem) {
                     lQuantity = lCart.children[1];
                 }         
 
+                
                 Cart.getCart().then(lCartData => {
                     lQuantity.innerText = lCartData.item_count;
+                    console.log("Added to cart");
                 });
             }
         }
