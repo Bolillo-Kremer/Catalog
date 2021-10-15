@@ -2,6 +2,8 @@ import {FlipBook} from "./flipbook.js";
 import {Cart, Item} from "./cart.js"
 
 //#region Properties
+let DataURL = "https://lavender-life-catalog.herokuapp.com";
+DataURL = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "." : DataURL;
 
 const Catalog = $("#flipbook");
 const Container = $("#catalogContainer");
@@ -12,8 +14,8 @@ const Corners = false;
 const ClickTurn = false;
 const Debug = false;
 const ProductColor = "rgba(164,66,245,0.5)";
-const Doc = new FlipBook("https://lavender-life-catalog.herokuapp.com/src/data/Catalog.pdf", 
-    "https://lavender-life-catalog.herokuapp.com/src/data/Products.json", 
+const Doc = new FlipBook(`${DataURL}/src/data/Catalog.pdf`, 
+    `${DataURL}/src/data/Products.json`, 
     pageLoader, 
     productClick, 
     1.5);
