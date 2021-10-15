@@ -1813,9 +1813,9 @@
           [ 192, 543 ]
         ]
       ],
-      "itemID": "Lavender Woods RELIEF After Shave",
-      "itemName": "40044252364979",
-      "itemURL": "products/lavender-woods-relief-after-shave?variant=40044252364979"
+      "itemID": "40044252364979",
+      "itemName": "Lavender Woods RELIEF After Shave",
+      "itemHandle": "lavender-woods-relief-after-shave"
     },
     {
       "nodes": [
@@ -2250,7 +2250,7 @@
       ],
       "itemID": "13633256652842",
       "itemName": "Lavender Herb - Dried Culinary Lavender",
-      "itemURL": "products/lavender-herb-dried-culinary-lavender?variant=13633256652842"
+      "itemHandle": "lavender-herb-dried-culinary-lavender"
     },
     {
       "nodes": [
@@ -6272,7 +6272,7 @@
       ],
       "itemID": "13633256652842",
       "itemName": "Lavender Herb - Dried Culinary Lavender",
-      "itemURL": "products/lavender-herb-dried-culinary-lavender?variant=13633256652842"
+      "itemHandle": "lavender-herb-dried-culinary-lavender"
     }
   ],
   "51": [

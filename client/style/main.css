@@ -23,7 +23,7 @@ progress::-webkit-progress-bar {
 }
 
 progress::-webkit-progress-value {
-  background-color: #613569;
+  background-color: #463882;
   border-radius: 5px;
 }
 
@@ -31,7 +31,7 @@ progress::-webkit-progress-value {
   color: #7975b0;
 }
 .fa-chevron-circle-left:hover {
-  color: #61346d;
+  color: #463882;
   cursor: pointer;
 }
 
@@ -39,7 +39,7 @@ progress::-webkit-progress-value {
   color: #7975b0;
 }
 .fa-chevron-circle-right:hover {
-  color: #61346d;
+  color: #463882;
   cursor: pointer;
 }
 

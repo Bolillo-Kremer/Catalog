@@ -141,6 +141,23 @@ function productClick(aItem) {
 
             if(addToCart) {
                 Cart.addToCart(aItem);
+
+                let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
+                let lQuantity = null;
+
+                if (lCart.children.length != 2) {
+                    lQuantity = document.createElement("span");
+                    lQuantity.setAttribute("class", "header-cart__count header-cart__count--badge badge");
+                    lQuantity.setAttribute("data-bind", "itemCount");
+                    lCart.appendChild(lQuantity)
+                }
+                else {
+                    lQuantity = lCart.children[1];
+                }         
+
+                Cart.getCart().then(lCartData => {
+                    lQuantity.innerText = lCartData.item_count;
+                });
             }
         }
         else {
