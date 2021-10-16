@@ -125,11 +125,11 @@ export const Item = class Item {
     quantity = null;
     properties = null;
 
-    constructor (aItemID, aItemName, aHandle, aQuantity, aProperties = null) {
+    constructor (aItemID, aItemName, aHandle, aQuantity = null, aProperties = null) {
         this.id = aItemID;
         this.name = aItemName;
         this.handle = aHandle;
-        this.quantity = aQuantity;
+        this.quantity = aQuantity || 1;
         this.properties = aProperties;
     }
 
