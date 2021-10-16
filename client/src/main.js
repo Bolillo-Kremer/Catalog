@@ -152,25 +152,15 @@ function productClick(aItem) {
             let addToCart = confirm(`Would you like to add "${lVariant.name}" to your cart?\n$${lVariant.price / 100}`);
 
             if(addToCart) {
-                Cart.addToCart(aItem);
-
-                let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
-                let lQuantity = null;
-
-                if (lCart.children.length != 2) {
-                    lQuantity = document.createElement("span");
-                    lQuantity.setAttribute("class", "header-cart__count header-cart__count--badge badge");
-                    lQuantity.setAttribute("data-bind", "itemCount");
-                    lCart.appendChild(lQuantity)
-                }
-                else {
-                    lQuantity = lCart.children[1];
-                }         
-
-                
-                Cart.getCart().then(lCartData => {
-                    lQuantity.innerText = lCartData.item_count;
-                    console.log("Added to cart");
+                Cart.addToCart(aItem).then(() => {
+                    let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
+                    let lQuantity = lQuantity = lCart.children[1];
+                    lQuantity.setAttribute("class", "header-cart__count--badge badge");
+                    
+                    Cart.getCart().then(lCartData => {
+                        lQuantity.innerText = lCartData.item_count;
+                        console.log("Added to cart");
+                    });
                 });
             }
         }
