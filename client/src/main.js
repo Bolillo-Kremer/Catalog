@@ -154,7 +154,7 @@ function productClick(aItem) {
             if(addToCart) {
                 Cart.addToCart(aItem).then(() => {
                     let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
-                    let lQuantity = lQuantity = lCart.children[1];
+                    let lQuantity = lCart.children[1];
                     lQuantity.setAttribute("class", "header-cart__count--badge badge");
                     
                     Cart.getCart().then(lCartData => {
