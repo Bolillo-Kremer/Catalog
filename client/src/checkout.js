@@ -3,7 +3,7 @@ export const Checkout = class Checkout {
     element = null;
 
     constructor(aItemDescription, aPrice, aOnClick) {
-        let lModal = simpleElement("div", null, null, {class: "modal"});
+        //let lModal = simpleElement("div", null, null, {class: "modal"});
         let lModalContent = simpleElement("div", null, null, {class: "modal-content"});
         let lInnerDiv = document.createElement("div");
     
@@ -42,9 +42,9 @@ export const Checkout = class Checkout {
         })));
     
         lModalContent.appendChild(lInnerDiv);
-        lModal.appendChild(lModalContent);
+        //lModal.appendChild(lModalContent);
 
-        this.element = lModal;
+        this.element = lModalContent;
     }
 
     show() {
