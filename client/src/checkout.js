@@ -15,7 +15,21 @@ export const Checkout = class Checkout {
         lInnerDiv.appendChild(simpleElement("h1", aItemName));
         lInnerDiv.appendChild(document.createElement("br"));
         lInnerDiv.appendChild(document.createElement("br"));
-        lInnerDiv.appendChild(simpleElement("div", null, {innerHTML: aItemDescription}));
+
+        let lDescription = document.createElement("div");
+
+        for(let lChild of simpleElement("div", null, {innerHTML: aItemDescription}).children) {
+            if (lChild.tagName.includes("H") && lChild.tagName.length == 2) {
+                lDescription.appendChild(document.createElement("br"));
+                lDescription.appendChild(lChild);
+                lDescription.appendChild(document.createElement("br"));
+            }
+            else {
+                lDescription.appendChild(lChild);
+            }
+        }
+
+        lInnerDiv.appendChild(lDescription);
         lInnerDiv.appendChild(document.createElement("br"));
         lInnerDiv.appendChild(document.createElement("br"));
 
