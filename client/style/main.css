@@ -143,8 +143,7 @@ progress::-webkit-progress-value {
   font-size: larger;
   color: white;
   border: none;
-  border-radius: 5px;
-  width: 45%;
+  width: 50%;
   height: 50px;
 }
 .addtocart:hover {
@@ -153,12 +152,10 @@ progress::-webkit-progress-value {
 
 .cancel {
   background-color: #463882;
-  float: right;
   font-size: larger;
   color: white;
   border: none;
-  border-radius: 5px;
-  width: 45%;
+  width: 50%;
   height: 50px;
 }
 .cancel:hover {
