@@ -150,7 +150,7 @@ function productClick(aItem) {
         }
 
         if (lVariant != null && lVariant.available) {
-            let modal = new Checkout(lVariant.name, aProduct.description, lVariant.price, () => {
+            let modal = new Checkout(aProduct.description, lVariant.price, () => {
                 Cart.addToCart(aItem).then(() => {
                     let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
                     let lQuantity = lCart.children[1];

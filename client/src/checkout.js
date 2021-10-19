@@ -2,7 +2,7 @@ export const Checkout = class Checkout {
 
     element = null;
 
-    constructor(aItemName, aItemDescription, aPrice, aOnClick) {
+    constructor(aItemDescription, aPrice, aOnClick) {
         let lModal = simpleElement("div", null, null, {class: "modal"});
         let lModalContent = simpleElement("div", null, null, {class: "modal-content"});
         let lInnerDiv = document.createElement("div");
@@ -11,8 +11,6 @@ export const Checkout = class Checkout {
             aEvent.preventDefault();
             this.hide();
         })));
-    
-        lInnerDiv.appendChild(simpleElement("h1", aItemName));
 
         let lDescription = document.createElement("div");
         for(let lChild of simpleElement("div", null, {innerHTML: aItemDescription}).children) {
