@@ -138,6 +138,33 @@ progress::-webkit-progress-value {
   cursor: pointer;
 }
 
+.addtocart {
+  background-color: #7975b0;
+  font-size: larger;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 45%;
+  height: 50px;
+}
+.addtocart:hover {
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: #463882;
+  float: right;
+  font-size: larger;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 45%;
+  height: 50px;
+}
+.cancel:hover {
+  cursor: pointer;
+}
+
 .lds-ripple {
     display: inline-block;
     position: relative;

@@ -13,17 +13,20 @@ export const Checkout = class Checkout {
         })));
     
         lInnerDiv.appendChild(simpleElement("h1", aItemName));
+        lInnerDiv.appendChild(document.createElement("br"));
+        lInnerDiv.appendChild(document.createElement("br"));
         lInnerDiv.appendChild(simpleElement("div", null, {innerHTML: aItemDescription}));
         lInnerDiv.appendChild(document.createElement("br"));
-        lInnerDiv.appendChild(simpleElement("button", `Add to cart for $${aPrice / 100}`, null, 
-        {class : "w3-add-to-cart button  ajax-submit action_button button--add-to-cart  action_button--secondary"}, 
+        lInnerDiv.appendChild(document.createElement("br"));
+
+        lInnerDiv.appendChild(simpleElement("button", `Add to cart for $${aPrice / 100}`, null, {class : "addtocart"}, 
         createEventListener("click", (aEvent) => {
             aEvent.preventDefault();
             this.hide();
             aOnClick();
         })));
-        lInnerDiv.appendChild(simpleElement("button", "Cancel", null, 
-        {class : "w3-add-to-cart button  ajax-submit action_button button--add-to-cart  action_button--secondary"},
+        
+        lInnerDiv.appendChild(simpleElement("button", "Cancel", null, {class : "cancel"},
         createEventListener("click", (aEvent) => {
             aEvent.preventDefault();
             this.hide();
