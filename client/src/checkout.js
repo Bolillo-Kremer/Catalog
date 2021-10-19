@@ -1,8 +1,9 @@
 export const Checkout = class Checkout {
 
     element = null;
+    appendTo = null;
 
-    constructor(aItemDescription, aPrice, aOnClick) {
+    constructor(aAppendTo, aItemDescription, aPrice, aOnClick) {
         //let lModal = simpleElement("div", null, null, {class: "modal"});
         let lModalContent = simpleElement("div", null, null, {class: "modal-content"});
         let lInnerDiv = document.createElement("div");
@@ -45,10 +46,11 @@ export const Checkout = class Checkout {
         //lModal.appendChild(lModalContent);
 
         this.element = lModalContent;
+        this.appendTo = aAppendTo;
     }
 
     show() {
-        document.body.appendChild(this.element);
+        this.appendTo.appendChild(this.element);
     }
 
     hide() {
