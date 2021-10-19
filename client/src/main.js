@@ -1,5 +1,6 @@
 import {FlipBook} from "./flipbook.js";
-import {Cart, Item} from "./cart.js"
+import {Cart, Item} from "./cart.js";
+import {Checkout} from "./checkout.js";
 
 //#region Properties
 let DataURL = "https://lavender-life-catalog.herokuapp.com";
@@ -149,20 +150,20 @@ function productClick(aItem) {
         }
 
         if (lVariant != null && lVariant.available) {
-            let addToCart = confirm(`Would you like to add "${lVariant.name}" to your cart?\n$${lVariant.price / 100}`);
+            let modal = new Checkout(lVariant.name, aProduct.description, lVariant.price, () => {
+                alert("Added to cart");
+                // Cart.addToCart(aItem).then(() => {
+                //     let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
+                //     let lQuantity = lCart.children[1];
+                //     lQuantity.setAttribute("class", "header-cart__count--badge badge");
 
-            if(addToCart) {
-                Cart.addToCart(aItem).then(() => {
-                    let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
-                    let lQuantity = lCart.children[1];
-                    lQuantity.setAttribute("class", "header-cart__count--badge badge");
-
-                    Cart.getCart().then(lCartData => {
-                        lQuantity.innerText = lCartData.item_count;
-                        console.log("Added to cart");
-                    });
-                });
-            }
+                //     Cart.getCart().then(lCartData => {
+                //         lQuantity.innerText = lCartData.item_count;
+                //         console.log("Added to cart");
+                //     });
+                // });
+            });
+            modal.show();
         }
         else {
             alert("Sorry, this product is currently out of stock or unavailable");
