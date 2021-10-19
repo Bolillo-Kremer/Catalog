@@ -151,17 +151,16 @@ function productClick(aItem) {
 
         if (lVariant != null && lVariant.available) {
             let modal = new Checkout(lVariant.name, aProduct.description, lVariant.price, () => {
-                alert("Added to cart");
-                // Cart.addToCart(aItem).then(() => {
-                //     let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
-                //     let lQuantity = lCart.children[1];
-                //     lQuantity.setAttribute("class", "header-cart__count--badge badge");
+                Cart.addToCart(aItem).then(() => {
+                    let lCart = document.getElementById("bag").parentElement.parentElement.parentElement;             
+                    let lQuantity = lCart.children[1];
+                    lQuantity.setAttribute("class", "header-cart__count--badge badge");
 
-                //     Cart.getCart().then(lCartData => {
-                //         lQuantity.innerText = lCartData.item_count;
-                //         console.log("Added to cart");
-                //     });
-                // });
+                    Cart.getCart().then(lCartData => {
+                        lQuantity.innerText = lCartData.item_count;
+                        console.log("Added to cart");
+                    });
+                });
             });
             modal.show();
         }
