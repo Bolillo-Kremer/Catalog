@@ -159,6 +159,7 @@ function productClick(aItem) {
                     Cart.getCart().then(lCartData => {
                         lQuantity.innerText = lCartData.item_count;
                         console.log("Added to cart");
+                        alert(`${lVariant.name} is added to your cart!`);
                     });
                 });
             });
