@@ -15,8 +15,8 @@ const Corners = false;
 const ClickTurn = false;
 const Debug = false;
 const ProductColor = "rgba(164,66,245,0.5)";
-const Doc = new FlipBook(`${DataURL}/src/data/Catalog.pdf`, 
-    `${DataURL}/src/data/Products.json`, 
+const Doc = new FlipBook("https://cdn.shopify.com/s/files/1/2643/1580/files/Catalog.pdf", 
+    "https://cdn.shopify.com/s/files/1/2643/1580/files/Products.json", 
     pageLoader, 
     productClick, 
     1.5);

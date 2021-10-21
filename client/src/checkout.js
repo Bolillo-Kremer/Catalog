@@ -1,10 +1,11 @@
 export const Checkout = class Checkout {
 
+    popup = true;
     element = null;
     appendTo = null;
 
     constructor(aAppendTo, aItemDescription, aPrice, aOnClick) {
-        //let lModal = simpleElement("div", null, null, {class: "modal"});
+        let lModal = simpleElement("div", null, null, {class: "modal"});
         let lModalContent = simpleElement("div", null, null, {class: "modal-content"});
         let lInnerDiv = document.createElement("div");
     
@@ -43,9 +44,9 @@ export const Checkout = class Checkout {
         })));
     
         lModalContent.appendChild(lInnerDiv);
-        //lModal.appendChild(lModalContent);
+        lModal.appendChild(lModalContent);
 
-        this.element = lModalContent;
+        this.element = this.popup ? lModal : lModalContent;
         this.appendTo = aAppendTo;
     }
 
