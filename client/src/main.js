@@ -3,6 +3,7 @@ import {Cart, Item} from "./cart.js";
 import {Checkout} from "./checkout.js";
 
 //#region Properties
+
 let DataURL = "https://lavender-life-catalog.herokuapp.com";
 DataURL = (location.hostname === "localhost" || location.hostname === "127.0.0.1") ? "." : DataURL;
 
@@ -93,8 +94,8 @@ function init() {
 
 /**
  * Page nav button handler
- * @param {*} aEvent The click event
- * @param {*} aDirection The direction turned
+ * @param {Function} aEvent The click event of the page navigation button
+ * @param {Boolean} aDirection The direction turned
  */
 function pageNav(aEvent, aDirection = true) {
     Catalog.turn("disable", false);
@@ -104,10 +105,10 @@ function pageNav(aEvent, aDirection = true) {
 }
 
 /**
- * Runs on turn
- * @param {*} aEvent 
- * @param {*} aPage 
- * @param {*} aPageObj 
+ * The function to run on page turn
+ * @param {*} aEvent The event
+ * @param {*} aPage The page index
+ * @param {*} aPageObj The visible page indices
  */
 function onTurn(aEvent, aPage, aPageObj) {
     for(let lIndex of aPageObj) {
@@ -134,7 +135,7 @@ function onTurn(aEvent, aPage, aPageObj) {
 
 /**
  * Runs when a product overlay is clicked
- * @param {*} aItem The item in the overlay
+ * @param {Item} aItem The item in the overlay
  */
 function productClick(aItem) {
     let lBaseUrl = "https://lavender-life.com";
@@ -173,7 +174,7 @@ function productClick(aItem) {
 
 /**
  * Runs every time a page is loaded
- * @param {*} aPage The page
+ * @param {Page} aPage The page
  */
 function pageLoader(aPage, aIndex, aPageCount) {
     if (aPage != null) {
@@ -215,8 +216,8 @@ function pageLoader(aPage, aIndex, aPageCount) {
 
 /**
  * Gets URL paramter name
- * @param {*} aParamName 
- * @returns 
+ * @param {String} aParamName The query parameter name
+ * @returns The value of the query parameter
  */
 function getParam(aParamName) {
     return new URLSearchParams(window.location.search).get(aParamName);

@@ -84,6 +84,10 @@ export const FlipBook = class FlipBook {
     return (aIndex > 0 && aIndex <= this.pageCount);
   }
 
+  /**
+   * Loads all pages into this Flipbook
+   * @returns 
+   */
   getAllPages() {
     return new Promise(async res => {
       for(let i = 0; i < this.pageCount; i++) {
@@ -96,15 +100,33 @@ export const FlipBook = class FlipBook {
     });
   }
 
+  /**
+   * Adds a given product overlay to a given page on this flipbook
+   * @param {Number} aIndex The page index to add the product overlay to
+   * @param {String} aColor The color of the overlay
+   * @returns The SVG element to overlay on this flipbook
+   */
   getSVG(aIndex, aColor) {
     return this.overlay.getSVG(aIndex, this.pageWidth, this.pageHeight, aColor, this.docScale);
   }
 }
 
+/**
+ * Page object for Flipbook
+ * @param {HTMLCanvasElement} aPage The Page canvas element
+ * @param {Number} aIndex The index of the page
+ */
 export const Page = class Page { 
+  /** Canvas element for this page */
   page = null;
+  /** The index of this page */
   index = 0;
 
+/**
+ * Creates a page object for Flipbook
+ * @param {HTMLCanvasElement} aPage The Page canvas element
+ * @param {Number} aIndex The index of the page
+ */
   constructor(aPage, aIndex) {
     this.page = aPage;
     this.page.style.position = "absolute";

@@ -1,4 +1,4 @@
-import { Cart, Item } from "./cart.js";
+import { Item } from "./cart.js";
 
 // -- Private Variables -- //
 
@@ -6,21 +6,31 @@ var src = null;
 var productClick = () => {};
 
 /**
- * Creates a product overlay on the catalog
+ * Creates a product overlay for the flipbook
+ * @param {String} aSrc The source of the product overlay data
+ * @param {Function} aOnClick The function to execute when the overlay is clicked 
  */
 export const Overlay = class Overlay {
 
+    /**
+     * The product overlay data
+     */
     productData = null;
 
     /**
-     * The Source of the product overlay data
-     * @param {*} aSrc 
+     * Creates a new product overlay for the flipbook
+     * @param {String} aSrc The source of the product overlay data
+     * @param {Function} aOnClick The function to execute when the overlay is clicked 
      */
     constructor(aSrc, aOnClick) {
         src = aSrc;
         productClick = aOnClick;
     }
 
+    /**
+     * Sets up the overlay on each page of the flipbook
+     * @returns A promise resolved with the overlay data
+     */
     initOverlay() {
         return new Promise((res, rej) => {
             try {
@@ -50,6 +60,15 @@ export const Overlay = class Overlay {
         return lProducts;
     }
 
+    /**
+     * Creates an SVG element to overlay on the flipbook page based on the product data
+     * @param {Number} aIndex The page index of the flipbook to add the overlay to
+     * @param {Number} aWidth The width of the overlay 
+     * @param {Number} aHeight The height of the overlay
+     * @param {String} aColor The color of the overlay 
+     * @param {Number} aScale The scale of the overlay compared to the page
+     * @returns 
+     */
     getSVG(aIndex, aWidth, aHeight, aColor, aScale) {
         let lSvg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         lSvg.setAttribute("height", aHeight);
@@ -68,15 +87,33 @@ export const Overlay = class Overlay {
     }
 }
 
+/**
+ * Class for creating polygon elements for the SVG overlay
+ * @param {Array} aNodes An array of nodes to create a polygon
+ * @param {Item} aItem The cart item that this product is linked to 
+ */
 export const Product = class Product {
+    /** The nodes of the polygon of this Product */
     nodes = [];
+    /** The item that this product is linked to */
     item = null;
 
+    /**
+     * Creates SVG elements for the overlay
+     * @param {Array} aNodes An array of nodes to create a polygon
+     * @param {Item} aItem The cart item that this product is linked to 
+     */
     constructor(aNodes, aItem) {
         this.nodes = aNodes;
         this.item = aItem;
     }
 
+    /**
+     * Creates a polygon element
+     * @param {String} aColor The color of the polygon 
+     * @param {Number} aScale The scale of the polygon compared to the size of the page
+     * @returns A polygon element
+     */
     getProductOutline(aColor, aScale) {
         let lPolygons = [];
         
